@@ -1,20 +1,45 @@
-﻿// Binary_Search.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
+﻿#include <iostream>
 
-#include <iostream>
+int binarySearch(int* p, int* q, int value) {
+
+    int start = 0;
+    int end = q - p;
+    int mid = 0;
+
+    while (start <= end) {
+
+        mid = (start + end) / 2;
+
+        if ( *(p + mid) == value ) {
+            return mid + 1;
+        }
+        else if (*(p + mid) <= value) {
+            start = mid;
+        }
+        else {
+            end = mid;
+        }
+    }
+
+    return -1;
+}
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    int mass[6] = { 1, 3, 5, 7, 9, 11 };
+    int* p = mass;
+    int* q = &mass[5];
+    int value = 0;
+
+    std::cout << "Enter your value: ";
+    std::cin >> value;
+
+    int result_pos = binarySearch(p, q, value);
+
+    if (result_pos == -1) {
+        std::cout << "Entered item does not exist in the array." << std::endl;
+    }
+    else {
+        std::cout << "Item position: " << result_pos << std::endl;
+    }
 }
-
-// Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
-// Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
-
-// Советы по началу работы 
-//   1. В окне обозревателя решений можно добавлять файлы и управлять ими.
-//   2. В окне Team Explorer можно подключиться к системе управления версиями.
-//   3. В окне "Выходные данные" можно просматривать выходные данные сборки и другие сообщения.
-//   4. В окне "Список ошибок" можно просматривать ошибки.
-//   5. Последовательно выберите пункты меню "Проект" > "Добавить новый элемент", чтобы создать файлы кода, или "Проект" > "Добавить существующий элемент", чтобы добавить в проект существующие файлы кода.
-//   6. Чтобы снова открыть этот проект позже, выберите пункты меню "Файл" > "Открыть" > "Проект" и выберите SLN-файл.
