@@ -15,9 +15,19 @@ int findSmallest(int* mass, size_t size) {
     return smallest_element_index;
 }
 
+void selectionSorting(int *new_mass, int* mass, size_t size) {
+
+    int i = 0;
+
+    while (i != size - 1) {
+        new_mass[i] = mass[findSmallest(mass, size)];
+    }
+}
+
 int main()
 {
     int* mass = new int[6] { 3, 8, 4, 1, 85, 24 };
+    int* new_mass = new int[6];
     size_t size = 6;
 
     std::cout << findSmallest(mass, size) << std::endl;
