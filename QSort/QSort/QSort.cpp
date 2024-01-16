@@ -29,7 +29,7 @@ std::vector<int> quickSort(std::vector<int> v) {
 
         v = quickSort(v_less);
         v.push_back(pivot);
-        quickSort(v_greater);
+        v_greater = quickSort(v_greater);
         for (int i = 0; i < v_greater.size(); i++) {
             v.push_back(v_greater[i]);
         }
